@@ -775,16 +775,11 @@ int Search::historyIndex(int nCycles) {
  */
 auto Search::HistoryByIndex(int index) -> HistoryEntry * {
 
-    if (NHist < 1) {
+    if (NHist < 1 || index < 0) {
         return nullptr;
     }
 
-    const int n = historyIndex(index);
-    if (n == -1) {
-        return nullptr;
-    }
-
-    return &SearchReplaceHistory[n];
+    return &SearchReplaceHistory[index];
 }
 
 
